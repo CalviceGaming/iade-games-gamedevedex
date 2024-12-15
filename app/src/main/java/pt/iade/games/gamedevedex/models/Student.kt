@@ -1,5 +1,6 @@
 package pt.iade.games.gamedevedex.models
 
+import java.io.Serializable
 import java.net.URI
 
 data class Student(
@@ -8,4 +9,4 @@ data class Student(
     val avatar: URI,
     val biography: String,
     val mood: String
-)
+):Serializable

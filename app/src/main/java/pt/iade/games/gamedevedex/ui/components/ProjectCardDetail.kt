@@ -48,8 +48,9 @@ fun ProjectDetail(
             Box(modifier = Modifier.fillMaxWidth()
                 .border(2.dp, Color.Gray)){
                 Row {
+                    var votes = project.votes.toString()
                     Text(
-                        text = project.votes.toString(),
+                        text = "$votes Votes",
                         fontSize = 17.sp,
                         color = Color(255, 0, 0),
                     )

@@ -35,6 +35,7 @@ import pt.iade.games.gamedevedex.ProjectDetailActivity
 import pt.iade.games.gamedevedex.R
 import pt.iade.games.gamedevedex.models.Project
 import pt.iade.games.gamedevedex.models.ProjectAsset
+import pt.iade.games.gamedevedex.models.ProjectAssetNotUri
 import pt.iade.games.gamedevedex.models.Student
 import java.net.URI
 
@@ -42,7 +43,9 @@ import java.net.URI
 fun ProjectCard(
     project: Project,
     projectImage: ProjectAsset,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    projectAsset: ProjectAssetNotUri,
+    assetList: List<ProjectAssetNotUri>
 ) {
     val context = LocalContext.current
     // var votes = project.votes
@@ -54,7 +57,9 @@ fun ProjectCard(
             Toast.makeText(context, project.title,
                 Toast.LENGTH_SHORT).show()
             val intent = Intent(context, ProjectDetailActivity::class.java)
-            intent.putExtra("ProjectName", project.title)
+            intent.putExtra("project", project)
+            intent.putExtra("listofass", ArrayList(assetList))
+            intent.putExtra("projectAss", projectAsset)
             //intent.putExtra("ProjectMembers", project.groupMembers)
             context.startActivity(intent)
         }
@@ -137,6 +142,32 @@ fun ProjectCardPreview() {
             projectImage = ProjectAsset(
                 Description = "Image Descrtiption like really?",
                 Asset = URI.create("https://cdn.mobygames.com/screenshots/12341377-among-us-windows-calling-an-emergency-meeting.png")
+            ),
+            projectAsset = ProjectAssetNotUri(
+                Description = "",
+                Asset = R.drawable.detectiveribbitlogo
+            ),
+            assetList = listOf(
+                ProjectAssetNotUri(
+                    Description = "Ribbit him self",
+                    Asset = R.drawable.frog1
+                ),
+                ProjectAssetNotUri(
+                    Description = "Ribbit's room'",
+                    Asset = R.drawable.room
+                ),
+                ProjectAssetNotUri(
+                    Description = "Fly Mafia Photo",
+                    Asset = R.drawable.flymafiaphoto
+                ),
+                ProjectAssetNotUri(
+                    Description = "Spec Sheet",
+                    Asset = R.drawable.spec_thing
+                ),
+                ProjectAssetNotUri(
+                    Description = "Funny Pipe :D",
+                    Asset = R.drawable.funnyactivepipe
+                ),
             )
         )
         ProjectCard(
@@ -164,6 +195,32 @@ fun ProjectCardPreview() {
             projectImage = ProjectAsset(
                 Description = "Image Descrtiption like really?",
                 Asset = URI.create("https://cdn.mobygames.com/screenshots/12341377-among-us-windows-calling-an-emergency-meeting.png")
+            ),
+            projectAsset = ProjectAssetNotUri(
+                Description = "",
+                Asset = R.drawable.detectiveribbitlogo
+            ),
+            assetList = listOf(
+                ProjectAssetNotUri(
+                    Description = "Ribbit him self",
+                    Asset = R.drawable.frog1
+                ),
+                ProjectAssetNotUri(
+                    Description = "Ribbit's room'",
+                    Asset = R.drawable.room
+                ),
+                ProjectAssetNotUri(
+                    Description = "Fly Mafia Photo",
+                    Asset = R.drawable.flymafiaphoto
+                ),
+                ProjectAssetNotUri(
+                    Description = "Spec Sheet",
+                    Asset = R.drawable.spec_thing
+                ),
+                ProjectAssetNotUri(
+                    Description = "Funny Pipe :D",
+                    Asset = R.drawable.funnyactivepipe
+                ),
             )
         )
     }

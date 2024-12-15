@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import pt.iade.games.gamedevedex.controllers.StudentController
 import pt.iade.games.gamedevedex.models.Project
 import pt.iade.games.gamedevedex.models.ProjectAsset
+import pt.iade.games.gamedevedex.models.ProjectAssetNotUri
 import pt.iade.games.gamedevedex.models.Student
 import pt.iade.games.gamedevedex.ui.components.ProjectCard
 import pt.iade.games.gamedevedex.ui.theme.GamedevedexTheme
@@ -79,7 +80,9 @@ fun MainView() {
             ProjectCard(
                 modifier = Modifier.padding(vertical = 20.dp),
                 project = ProjectExample(),
-                projectImage =ProjectImageExample()
+                projectImage =ProjectImageExample(),
+                assetList = ListofAss(),
+                projectAsset = ProjectDetail()
             )
         }
     }
@@ -107,9 +110,23 @@ fun ProjectExample(): Project {
         groupMembers = listOf(
             Student(
                 id = 123,
-                name = "João Pedro",
+                name = "Diogo Carvalho",
                 biography = "Gambler addict, loves plinko and blackjack is 30000 euros in debt",
                 mood = "Lucky",
+                avatar = URI.create("https://media.gettyimages.com/photos/cristiano-ronaldo-of-portugal-poses-during-the-official-fifa-world-picture-id450555852?k=6&m=450555852&s=612x612&w=0&h=aUh0DVio_ubpFtCVvMv3WLR1MVPQji1sN5PDNKvHCT4=")
+            ),
+            Student(
+                id = 124,
+                name = "Artur Nicolau",
+                biography = "Cool Awesome amazing yeah yuppiii!!!",
+                mood = "good i hope",
+                avatar = URI.create("https://media.gettyimages.com/photos/cristiano-ronaldo-of-portugal-poses-during-the-official-fifa-world-picture-id450555852?k=6&m=450555852&s=612x612&w=0&h=aUh0DVio_ubpFtCVvMv3WLR1MVPQji1sN5PDNKvHCT4=")
+            ),
+            Student(
+                id = 125,
+                name = "Anna-Maria",
+                biography = "Cool Awesome amazing yeah yuppiii!!!",
+                mood = "good i hope",
                 avatar = URI.create("https://media.gettyimages.com/photos/cristiano-ronaldo-of-portugal-poses-during-the-official-fifa-world-picture-id450555852?k=6&m=450555852&s=612x612&w=0&h=aUh0DVio_ubpFtCVvMv3WLR1MVPQji1sN5PDNKvHCT4=")
             )
         )
@@ -119,5 +136,37 @@ fun ProjectImageExample():ProjectAsset{
     return ProjectAsset(
         Description = "Image Description like really?",
         Asset = URI.create("https://cdn.mobygames.com/screenshots/12341377-among-us-windows-calling-an-emergency-meeting.png")
+    )
+}
+
+
+fun ProjectDetail(): ProjectAssetNotUri {
+    return ProjectAssetNotUri(
+        Description = "",
+        Asset = R.drawable.detectiveribbitlogo
+    )
+}
+fun ListofAss(): List<ProjectAssetNotUri> {
+    return listOf(
+        ProjectAssetNotUri(
+            Description = "Ribbit him self",
+            Asset = R.drawable.frog1
+        ),
+        ProjectAssetNotUri(
+            Description = "Ribbit's room'",
+            Asset = R.drawable.room
+        ),
+        ProjectAssetNotUri(
+            Description = "Fly Mafia Photo",
+            Asset = R.drawable.flymafiaphoto
+        ),
+        ProjectAssetNotUri(
+            Description = "Spec Sheet",
+            Asset = R.drawable.spec_thing
+        ),
+        ProjectAssetNotUri(
+            Description = "Funny Pipe :D",
+            Asset = R.drawable.funnyactivepipe
+        ),
     )
 }

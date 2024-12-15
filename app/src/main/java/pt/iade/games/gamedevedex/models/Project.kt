@@ -1,5 +1,6 @@
 package pt.iade.games.gamedevedex.models
 
+import java.io.Serializable
 import java.net.URI
 
 data class Project(
@@ -10,4 +11,4 @@ data class Project(
     val description: String,
     val groupMembers: List<Student>,
     val semester: Int
-)
+):Serializable
