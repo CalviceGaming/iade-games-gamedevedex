@@ -34,12 +34,14 @@ import coil3.compose.AsyncImage
 import pt.iade.games.gamedevedex.ProjectDetailActivity
 import pt.iade.games.gamedevedex.R
 import pt.iade.games.gamedevedex.models.Project
+import pt.iade.games.gamedevedex.models.ProjectAsset
 import pt.iade.games.gamedevedex.models.Student
 import java.net.URI
 
 @Composable
 fun ProjectCard(
     project: Project,
+    projectImage: ProjectAsset,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -52,6 +54,8 @@ fun ProjectCard(
             Toast.makeText(context, project.title,
                 Toast.LENGTH_SHORT).show()
             val intent = Intent(context, ProjectDetailActivity::class.java)
+            intent.putExtra("ProjectName", project.title)
+            //intent.putExtra("ProjectMembers", project.groupMembers)
             context.startActivity(intent)
         }
     ) {
@@ -61,7 +65,7 @@ fun ProjectCard(
                 .fillMaxWidth()
         ) {
             AsyncImage(
-                model = project.assets[0].toString(),
+                model = projectImage.Asset.toString(),
                 placeholder = painterResource(R.drawable.placeholder_cover_image),
                 contentDescription = "Cover image of the game",
                 modifier = Modifier.fillMaxSize(),
@@ -129,6 +133,10 @@ fun ProjectCardPreview() {
                         avatar = URI.create("https://media.gettyimages.com/photos/cristiano-ronaldo-of-portugal-poses-during-the-official-fifa-world-picture-id450555852?k=6&m=450555852&s=612x612&w=0&h=aUh0DVio_ubpFtCVvMv3WLR1MVPQji1sN5PDNKvHCT4=")
                     )
                 )
+            ),
+            projectImage = ProjectAsset(
+                Description = "Image Descrtiption like really?",
+                Asset = URI.create("https://cdn.mobygames.com/screenshots/12341377-among-us-windows-calling-an-emergency-meeting.png")
             )
         )
         ProjectCard(
@@ -152,6 +160,10 @@ fun ProjectCardPreview() {
                         avatar = URI.create("https://media.gettyimages.com/photos/cristiano-ronaldo-of-portugal-poses-during-the-official-fifa-world-picture-id450555852?k=6&m=450555852&s=612x612&w=0&h=aUh0DVio_ubpFtCVvMv3WLR1MVPQji1sN5PDNKvHCT4=")
                     )
                 )
+            ),
+            projectImage = ProjectAsset(
+                Description = "Image Descrtiption like really?",
+                Asset = URI.create("https://cdn.mobygames.com/screenshots/12341377-among-us-windows-calling-an-emergency-meeting.png")
             )
         )
     }
